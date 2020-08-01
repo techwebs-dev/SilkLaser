@@ -1,0 +1,18 @@
+﻿@model SilkLaser.Web.Classes.Entities.HtmlPage
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.HTMLTitle = Model.HTMLTitle;
+    ViewBag.MetaDescription = Model.MetaDescription;
+    ViewBag.MetaKeywords = Model.MetaKeywords;
+    if (Model.WithoutLayout)
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+@Html.Raw(Model.Content)

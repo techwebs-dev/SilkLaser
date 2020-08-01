@@ -1,0 +1,22 @@
+/* reset */
+$base-bg: url(../img/main_bg.png) repeat left top; 
+$base-font-size: 16px; 
+$base-line-height: 24px; 
+$base-font-family: Arial, sans-serif; 
+$custom-font-family: 'Amigo',  sans-serif; 
+$link-color: #b49755;
+$default-transition:all 0.2s linear;
+
+/* main variables */
+
+//text, titles
+$text-color: #231f20;
+$title-color: #231f20;
+$title-font-family: $custom-font-family;
+
+$font-size-h1: 30px;
+$line-height-h1: 40px;
+$font-size-h2: 30px;
+$line-height-h2: 40px;
+$font-size-h3: 22px;
+$line-height-h3: 30px;

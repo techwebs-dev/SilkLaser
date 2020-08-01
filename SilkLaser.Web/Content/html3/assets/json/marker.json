@@ -1,0 +1,84 @@
+[
+  {
+    "index": 0,
+    "latitude": 42.468045,
+    "longitude": 13.07968,
+    "url": "#item-9",
+    "status": "error",
+    "title": "$ 200 000"
+  },
+  {
+    "index": 1,
+    "latitude": 42.47311,
+    "longitude": 12.031859,
+    "url": "#item-1",
+    "status": "default",
+    "title": "$ 200 000"
+  },
+  {
+    "index": 2,
+    "latitude": 42.154241,
+    "longitude": 11.375426,
+    "url": "#item-2",
+    "status": "error",
+    "title": "$ 200 000"
+  },
+  {
+    "index": 3,
+    "latitude": 43.218187,
+    "longitude": 12.681426,
+    "url": "#item-3",
+    "status": "success",
+    "title": "$ 200 000"
+  },
+  {
+    "index": 4,
+    "latitude": 43.555515,
+    "longitude": 13.432616,
+    "url": "#item-4",
+    "status": "success",
+    "title": "$ 200 000"
+  },
+  {
+    "index": 5,
+    "latitude": 43.808765,
+    "longitude": 12.512511,
+    "url": "#item-5",
+    "status": "success",
+    "title": "$ 200 000"
+  },
+  {
+    "index": 6,
+    "latitude": 50.4501,
+    "longitude": 30.523400000000038,
+    "url": "#item-6",
+    "status": "default",
+    "title": "$ 200 000"
+  },
+  {
+    "index": 7,
+    "latitude": 55.755826,
+    "longitude": 37.6173,
+    "url": "#item-7",
+    "status": "default",
+    "title": "$ 200 000"
+  }
+,
+  {
+    "index": 8,
+    "latitude": 54.755826,
+    "longitude": 32.6173,
+    "url": "#item-8",
+    "status": "default",
+    "title": "$ 200 000"
+  }
+,
+  {
+    "index": 9,
+    "latitude": 53.755826,
+    "longitude": 39.6173,
+    "url": "#item-9",
+    "status": "default",
+    "title": "$ 200 000"
+  }
+]

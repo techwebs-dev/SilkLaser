@@ -1,0 +1,39 @@
+﻿@using SilkLaser.Web.Classes.Ext
+@using SilkLaser.Web.Classes.Utils
+@model SilkLaser.Web.Classes.Entities.FaqQuestion
+
+@{
+    ViewBag.Title = string.Format("Вопрос: {0}", Model.Question);
+    ViewBag.HTMLTitle = Model.Question+ " - Вся информация о лазерной эпиляции в Хабаровске";
+    ViewBag.MetaDescription = string.Format("Вопрос: {0}. Получите ответы на все интересующие вас вопросы о лазерном удалении волос (эпиляции) в Хабаровске. На сколько её хватает, навсегда ли удаляет волосы лазерная эпиляция, какие есть противопоказания, почему лазерная эпиляция дешевле бритья, воска и шугаринга, и пр.", Model.Question);
+
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var dc = ViewContext.DataContext();
+}
+
+<div class="container-fluid">
+    <div class="box-about">
+        <h1>@Model.Question</h1>
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                <ul class="list-faq">
+                    @foreach (var question in dc.FaqQuestions.OrderBy(c => c.Position))
+                    {
+                    <li class="list-faq__item @(Model.Id == question.Id ? "active":"")">
+                        <a href="/faq/@question.Id/@StringUtils.TitleToSeoRoute(question.Question)" class="list-faq__link">@question.Question</a>
+                    </li>}
+                </ul>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 answer">
+                <div class="section-text-info last">
+                    <h3 class="style-title">Ответ</h3>
+                    <div class="answer__cont">
+                        @Html.Raw(Model.Answer)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="font-bold text-bottom-faq">Если Вы не нашли ответ на интересующий Ваш вопрос о лазерной эпиляции или о решении проблем кожи, то Вы можете задать Ваш вопрос напрямую, <a href="#"  onclick="Chatra('openChat', true); return false;" class="link">нажав сюда</a>, позвонить нам по телефону 944 - 150 или записаться на бесплатную консультацию, <a href="#" class="link ms_booking" data-url="https://w45361.yclients.com">нажав сюда</a>.</p>
+    </div>
+</div>	

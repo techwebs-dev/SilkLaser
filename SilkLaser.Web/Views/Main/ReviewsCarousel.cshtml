@@ -1,0 +1,49 @@
+﻿@using SilkLaser.Web.Classes.Ext
+@model dynamic
+
+@{
+    var reviews = ViewContext.DataContext().Reviews.Where(r => r.Published).OrderBy(r => r.Position).ToList();
+}
+<div class="box-reviews">
+    <div class="container-fluid">
+        <h2 class="title-block title-block_white">Отзывы</h2>
+        <div class="slider-reviews js-slider-reviews row">
+            @foreach (var review in reviews)
+            {
+                var reviewText = String.Join("", review.Content.Split('\n').Select(l => String.Format("<p>{0}</p>", l)));
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="review">
+                        @Html.Raw(reviewText)
+                        <div class="review-author">
+                            <span class="review-author__photo">
+                                @if (review.Image != null)
+                                {
+                                <img src="@review.Image" />}
+                            </span>
+                            <p class="review-author__name">@review.Name</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.js-slider-reviews').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        adaptiveHeight: true,
+        arrows: false,
+        responsive: [{
+            breakpoint: 991,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
+    });
+</script>

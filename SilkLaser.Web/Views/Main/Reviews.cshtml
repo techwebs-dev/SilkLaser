@@ -1,0 +1,122 @@
+﻿@using SilkLaser.Web.Classes.Ext
+@model dynamic
+
+@{
+    ViewBag.Title = "Отзывы";
+    ViewBag.HTMLTitle = "Отзывы о Лазерной клинике Silk в Хабаровске";
+    ViewBag.MetaDescription = "Оставляйте или читайте отзывы клиентов Лазерной клиники Silk в Хабаровске.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var reviews = ViewContext.DataContext().Reviews.Where(r => r.Published).OrderBy(r => r.Position).ToList();
+}
+
+
+<div class="container-fluid">
+    <div class="box-inner">
+        <div class="b-boxgoals">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="boxgoals_c-box">
+                        <a href="https://n45361.yclients.com/company:63462/master-info:107458?o=s514030d1730031015#reviews" class="_c1"><img src="/Content/html2/img/oksana.jpg" alt=""></a>
+                        <a href="https://n45361.yclients.com/company:63462/master-info:107458?o=s514030d1730031015#reviews" class="button">Отзывы об Оксане</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="boxgoals_c-box">
+                        <a href="https://n45361.yclients.com/company:63462/master-info:112304?o=s514030d1730031015#reviews" class="_c1"><img src="/Content/html2/img/julia.jpg" alt=""></a>
+                        <a href="https://n45361.yclients.com/company:63462/master-info:112304?o=s514030d1730031015#reviews" class="button">Отзывы о Юлии</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="boxgoals_c-box">
+                        <a href="https://n45361.yclients.com/company:63462/master-info:179661?o=s1065232d1704081030#reviews" class="_c1"><img src="/Content/html2/img/olga.png" alt=""></a>
+                        <a href="https://n45361.yclients.com/company:63462/master-info:179661?o=s1065232d1704081030#reviews" class="button">Отзывы об Ольге</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1>Отзывы</h1>
+        <ul class="list-reviews">
+            @foreach (var review in reviews)
+            {
+                var reviewText = String.Join("", review.Content.Split('\n').Select(l => String.Format("<p>{0}</p>", l)));
+                <li class="list-reviews__item">
+                    <div class="review">
+                        @Html.Raw(reviewText)
+                        <div class="review-author">
+                            <span class="review-author__photo">
+                                @if (review.Image != null)
+                                {
+                                    <img src="@review.Image"/>
+                                }
+                            </span>
+                            <p class="review-author__name">@review.Name</p>
+                        </div>
+                    </div>
+                </li>}
+        </ul>
+        @*<ul class="pagging pagging_top">
+                <li class="pagging__item">
+                    <a href="#" class="pagging__link">1</a>
+                </li>
+                <li class="pagging__item">
+                    <a href="#" class="pagging__link">2</a>
+                </li>
+                <li class="pagging__item active">
+                    <a href="#" class="pagging__link">3</a>
+                </li>
+                <li class="pagging__item">
+                    <a href="#" class="pagging__link">4</a>
+                </li>
+                <li class="pagging__item other">
+                    ...
+                </li>
+                <li class="pagging__item">
+                    <a href="#" class="pagging__link">6</a>
+                </li>
+            </ul>*@
+    </div>
+    <div class="box-form-review">
+        <h2 class="title-block">Отзыв</h2>
+        <form class="form-review" action="/submit-review" enctype="multipart/form-data" method="POST">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group witout-first">
+                        <select class="styled" id="type-field" name="t">
+                            <option value="">Тема *</option>
+                            <option>Лазерная эпиляция</option>
+                            <option>Удаление пигментных пятен</option>
+                            <option>Общая</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="c" placeholder="Ваш Отзыв *" id="review-field"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <input type="text" name="n" class="form-control" placeholder="Ваше Имя *" id="name-field">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <input type="tel" name="p" class="form-control" placeholder="Ваш Телефон (не обязателен)" id="phone-field">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="btn-add-file">
+                            <span class="btn-add-file__icon"></span>
+                            Загрузить фотографию
+                            <input type="file" value=" " name="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="button button_black" value="Отправить">
+            <input type="reset" class="button button_black reset" value="Сбросить">
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,20 @@
+﻿@model System.Collections.Generic.List<SilkLaser.Web.Classes.Entities.SpecialOffer>
+
+@{
+    ViewBag.Title = "Акции";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="box-about box-about_top">
+        <h1>Акции</h1>
+        @foreach (var offer in Model)
+        {<div class="shares">
+            <div class="shares-text">
+                <img src="@offer.Image" alt="" class="shares-img" />
+                <p><span>Срок Действия:</span>@offer.Deadline</p>
+                <p><span>Условия: </span>@offer.Price.</p>
+            </div>
+        </div>}
+    </div>
+</div>

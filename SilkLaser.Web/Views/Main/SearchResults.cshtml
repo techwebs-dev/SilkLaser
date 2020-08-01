@@ -1,0 +1,53 @@
+﻿@model System.Collections.Generic.List<SilkLaser.Web.Models.SearchResultItem>
+
+@{
+    ViewBag.Title = "Результаты поиска";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="box-about box-about_top">
+        <h1>Поиск</h1>
+        <form class="search" action="/search">
+            <input type="text" class="form-search__input" name="q" placeholder="Поиск" value="@ViewBag.query">
+            <input type="submit" class="search__button" value="Поиск">
+        </form>
+        <ul class="list-search">
+            @if (Model.Count > 0)
+            {
+                foreach (var result in Model)
+                {
+                    <li class="list-search__item">
+                        <a href="@result.Url" class="list-search__title">@result.Title</a>
+                    </li>
+                }
+            }
+            else
+            {
+                <p class="text-center">
+                    Ничего не найдено.
+                </p>
+            }
+        </ul>
+        @*<ul class="pagging">
+            <li class="pagging__item">
+                <a href="#" class="pagging__link">1</a>
+            </li>
+            <li class="pagging__item">
+                <a href="#" class="pagging__link">2</a>
+            </li>
+            <li class="pagging__item">
+                <a href="#" class="pagging__link">3</a>
+            </li>
+            <li class="pagging__item">
+                <a href="#" class="pagging__link">4</a>
+            </li>
+            <li class="pagging__item">
+                ...
+            </li>
+            <li class="pagging__item">
+                <a href="#" class="pagging__link">10</a>
+            </li>
+        </ul>*@
+    </div>
+</div>

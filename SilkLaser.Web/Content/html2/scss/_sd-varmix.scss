@@ -1,0 +1,71 @@
+// custom variables
+// ===============================================================
+//$gray-lighter: lighten($gray-base, 93.5%) !default;
+//$brand-primary: darken(#428bca, 6.5%) !default;
+$shadow-1: 0 0px 4px rgba(0,0,0,.1);
+
+// custom mixins
+// ===============================================================
+@mixin sd-img-responsive($display: inline-block) {
+  display: $display;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+@mixin sd-img-responsive-1($display: inline-block) {
+  display: $display;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@mixin sd-center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin sd-border-radius($radius-sd) {
+  -webkit-border-radius: $radius-sd;
+  -moz-border-radius: $radius-sd;
+  //-ms-border-radius: $radius;
+  border-radius: $radius-sd;
+}
+
+@mixin sd-list-unstyled ($pl: 0) {
+  padding-left: $pl;
+  list-style: none;
+}
+@mixin sd-list-inline ($mp: 5px) {
+  @include sd-list-unstyled;
+  margin-left: -$mp;
+  > li {
+    display: inline-block;
+    padding-left: $mp;
+    padding-right: $mp;
+  }
+}
+.sd-list-inline{
+  @include sd-list-inline(5px);
+}
+
+@mixin sd-opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: ($opacity * 100);   // IE8 filter
+  filter: alpha(opacity=$opacity-ie);   // IE8 filter
+}
+
+@mixin sd-box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+@mixin sd-clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}

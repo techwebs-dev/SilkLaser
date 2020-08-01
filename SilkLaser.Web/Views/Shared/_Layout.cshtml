@@ -1,0 +1,338 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="@(ViewBag.MetaDescription)" />
+    <meta name="keywords" content="@(ViewBag.MetaKeywords)" />
+    <title>@(ViewBag.HTMLTitle ?? ViewBag.Title) - SILK Хабаровск</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Content/html3/assets/css/libs.css" />
+    <link rel="stylesheet" href="/Content/html3/assets/css/style.css" />
+    <link rel="icon" type="image/png" href="/Content/html3/assets/img/favicon.png"/>
+    <style>
+        body.loading {
+            overflow: hidden;
+        }
+
+        .page-preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            overflow: hidden;
+            z-index: 100500;
+        }
+
+        .loader {
+            display: inline-block;
+            line-height: 0;
+            top: 50%;
+            left: 50%;
+            width: 160px;
+            margin-top: -25px;
+            height: 42px;
+            position: absolute;
+            transform: translateX(-50%);
+        }
+
+        .spinner-container {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            margin-left: -80px;
+            width: 160px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+            .spinner-container:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 1px;
+                transform: translate(-100%, 0);
+                background-color: #bc9e52;
+                animation: loading 3400ms cubic-bezier(.23, 1, .32, 1) infinite;
+                animation-delay: 2s;
+            }
+
+        @@keyframes loading {
+            75% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(100%, 0);
+            }
+        }
+    </style>
+</head>
+<body class="loading">
+    <div class="page-preloader">
+        <div class="loader">
+            <div class="logo">
+                <img src="/Content/html3/assets/img/logo.png" alt="img">
+            </div>
+            <div class="spinner-container"></div>
+        </div>
+    </div>
+    <div id="page-wrapper" class="page-wrapper remodal-bg">
+        <!-- Begin header -->
+        <div id="header-outer" class="header-wrap">
+            <header id="header" class="wrapper header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="/" class="logo">
+                                <span class="icon">
+                                    <img src="/Content/html3/assets/img/svg/logo.svg" alt="img">
+                                </span>
+                                <span class="label">
+                                    <img src="/Content/html3/assets/img/svg/logo-label.svg" alt="img">
+                                </span>
+                            </a>
+                            <div class="nav-wrap">
+                                <nav class="navigation">
+                                    <ul>
+                                        <li>
+                                            <a class="el-link-sm" href="#">
+                                                Лазерная эпиляция
+                                                <svg class="icon icon-arrow-d">
+                                                    <use xlink:href="/Content/html3/assets/img/symbol/sprite.svg#arrow-d"></use>
+                                                </svg>
+                                            </a>
+                                            <ul class="drop-menu">
+                                                <li><a class="js-page-scroll" href="/laser-epilation#advantages">Гарантии Silk</a></li>
+                                                <li><a class="js-page-scroll" href="/laser-epilation#reviews">Отзывы</a></li>
+                                                <li><a class="js-page-scroll" href="/laser-epilation#equipment">Оборудование</a></li>
+                                                <li><a class="js-page-scroll" href="/laser-epilation#process">Процесс эпиляции</a></li>
+                                                <li><a class="js-page-scroll" href="/laser-epilation#resault">Результат</a></li>
+                                                <li><a href="/faq">Вопросы и ответы</a></li>
+                                                <li><a class="js-page-scroll" href="/laser-epilation#contraindications">Противопоказания</a></li>
+                                                <li><a class="js-page-scroll" href="/laser-epilation#preparation">Подготовка и уход после процедуры</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="el-link-sm" href="/prices">Цены</a></li>
+                                        <li><a class="js-page-scroll el-link-sm" href="/laser-epilation#contact">Контакты</a></li>
+                                    </ul>
+                                </nav>
+                                <a href="#" data-url="https://w45361.yclients.com" class="el-btn mod-white mod-sm ms_booking">Записаться на <span class="mob-hide">бесплатный </span>прием</a>
+                                <a href="tel:944150" class="phone el-link-sm">944-150</a>
+                            </div>
+                            <a href="#" class="menu js-menu">
+                                <svg class="icon icon-menu">
+                                    <use xlink:href="/Content/html3/assets/img/symbol/sprite.svg#menu"></use>
+                                </svg>
+                                <svg class="icon icon-cancel">
+                                    <use xlink:href="/Content/html3/assets/img/symbol/sprite.svg#cancel"></use>
+                                </svg>
+                            </a>
+                            <a href="tel:944150" class="call">
+                                <svg class="icon icon-call">
+                                    <use xlink:href="/Content/html3/assets/img/symbol/sprite.svg#call"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- End header -->
+        <!-- Begin page body -->
+        @RenderBody()
+        <!-- End page body -->
+        <!-- Begin footer -->
+        <footer id="footer" class="wrapper footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="nav">
+                            <ul>
+                                <li><a class="el-link-sm" href="/faq">Вопросы и ответы</a></li>
+                                <li><a class="el-link-sm" href="/certificates">Подарочные сертификаты</a></li>
+                                <li><a class="el-link-sm" href="/referral">Реферальная система</a></li>
+                                <li><a class="el-link-sm" href="/legal">Правовая информация</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="cop">© 2017 - 2018 Silk.</p>
+                    </div>
+                    <div class="col-sm-6 text-xs-center text-sm-center text-md-right text-lg-right">
+                        <p class="polis"><a href="#" class="el-link-sm">Условия и положения</a> | <a href="/privacy" class="el-link-sm">Политика конфиденциальности</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="remodal" data-remodal-id="modal">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <h2>
+                Запишитесь на
+                <b>бесплатную консультацию</b>
+                в Лазерную клинику Silk
+            </h2>
+            <form action="#" id="feedback-form">
+                <label class="el-input">
+                    <input type="text" id="phone-field" placeholder="Ваш Телефон *">
+                </label>
+                <div class="btn-wrap">
+                    <button data-remodal-action="confirm" class="el-btn sbmt">ЗАПИСАТЬСЯ СЕЙЧАС</button>
+                </div>
+            </form>
+        </div>
+        <!-- End footer -->
+    </div>
+    <!-- Begin script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCShgF5B0Tk-6FprwqYN2E_J8gdiKI4I-U&v=3.exp"></script>
+    <script src="/Content/html3/assets/js/libs.js"></script>
+    <script src="/Content/html3/assets/js/scripts.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.page-preloader .loader').stop(true, true).delay(2000).animate({ opacity: '0' }, 200, 'easeOutExpo', function () {
+                document.body.classList.remove('loading');
+                $('.page-preloader').fadeOut('slow');
+            });
+
+            $(".sbmt").click(function () {
+                var phone = $("#phone-field").val();
+                if (phone === null || phone === undefined || phone.trim() === "") {
+                    alert("Введите ваш телефон");
+                    return;
+                }
+
+                $.post("/feedback", { p: phone }, function (result) {
+                    if (result.success === true) {
+                        alert("Ваша заявка успешно отправлена");
+                    }
+                }, 'json');
+
+            });
+        });
+    </script>
+    <script type="text/javascript" src="https://w45361.yclients.com/widgetJS"></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter42004539 = new Ya.Metrika({
+                        id: 42004539,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/42004539" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    @*<script>
+            window.ChatraSetup = {
+                colors: {
+                    buttonText: '#bc9e52', // цвет текста кнопки чата
+                    buttonBg: '#85d7d1'    // цвет фона кнопки чата
+                }
+            };
+        </script>
+        <!-- Chatra {literal} -->
+        <script>
+            (function (d, w, c) {
+                w.ChatraID = 'Wo6foSymusaNCLWL4';
+                var s = d.createElement('script');
+                w[c] = w[c] || function () {
+                    (w[c].q = w[c].q || []).push(arguments);
+                };
+                s.async = true;
+                s.src = (d.location.protocol === 'https:' ? 'https:' : 'http:')
+                + '//call.chatra.io/chatra.js';
+                if (d.head) d.head.appendChild(s);
+            })(document, window, 'Chatra');
+        </script>
+        <!-- /Chatra {/literal} -->*@
+    <script src="//cdn.callibri.ru/callibri.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-91642707-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115374724-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115374724-1');
+    </script>
+
+
+    <!-- Код тега ремаркетинга Google -->
+    <!--------------------------------------------------
+    С помощью тега ремаркетинга запрещается собирать информацию, по которой можно идентифицировать личность пользователя. Также запрещается размещать тег на страницах с контентом деликатного характера. Подробнее об этих требованиях и о настройке тега читайте на странице http://google.com/ads/remarketingsetup.
+    --------------------------------------------------->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 863258061;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+            /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/863258061/?guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+<!-- End script -->
+    
+<!-- Facebook Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2065667470421544');
+    fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=2065667470421544&ev=PageView&noscript=1"
+          /></noscript>
+<!-- End Facebook Pixel Code -->
+</body>
+</html>

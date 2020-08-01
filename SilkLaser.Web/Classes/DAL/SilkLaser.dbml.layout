@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 17.25, 8.5" name="SilkLaser">
+  <DataContextMoniker Name="/SilkLaserDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d3ad6e2f-bb6d-4d63-aa71-eca27ea38e86" absoluteBounds="0.5, 0.5, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/SilkLaserDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5d58c55-d4fe-4616-b2dd-6c5b7d88dad7" absoluteBounds="0.515, 0.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9e79ede4-ba96-49f7-a19b-7ea9a1d920ca" absoluteBounds="5.375, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/SilkLaserDataContext/WorkerQueueItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1bab2878-ef0c-4b71-8b15-e1747e44c9c3" absoluteBounds="5.39, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e972e46c-b9f6-44a7-be31-d7afb8eea998" absoluteBounds="10.125, 0.5, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/SilkLaserDataContext/FaqQuestion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cee4961b-3929-479f-966d-e3d7dc93a31f" absoluteBounds="10.14, 0.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="69414d2e-2eb7-430a-9e76-4f559db1087c" absoluteBounds="12.5, 0.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/SilkLaserDataContext/Review" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0b28820e-14a2-45b5-b8ac-654d2f1f1e34" absoluteBounds="12.515, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4fba7f5c-8b2b-4e62-a1ff-e97cc5205cf4" absoluteBounds="15, 0.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/SilkLaserDataContext/SpecialOffer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a28858e1-d456-4e5e-90fa-8c3c27cb1ea1" absoluteBounds="15.015, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1f0303e8-39cf-4e72-af7a-868e31cfad7e" absoluteBounds="2.875, 0.5, 2, 3.1170068359375">
+      <DataClassMoniker Name="/SilkLaserDataContext/HtmlPage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7acc9c5f-f5a6-43aa-898b-4821975b1074" absoluteBounds="2.89, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d2d37e82-9553-4b82-a0a8-64ebe649909d" absoluteBounds="7.875, 0.5, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/SilkLaserDataContext/Price" />
+      <nestedChildShapes>
+        <elementListCompartment Id="53954fb2-45d3-44c8-bb97-7762d383ea62" absoluteBounds="7.8900000000000006, 0.96, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

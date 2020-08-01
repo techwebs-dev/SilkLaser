@@ -1,0 +1,46 @@
+﻿@using SilkLaser.Web.Classes.Ext
+@model dynamic
+
+@{
+    ViewBag.Title = "Вопросы и Ответы";
+    ViewBag.HTMLTitle = "Вопросы и Ответы по процедурами в клинике лазерной косметологии SILK";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-body" class="page-body">
+    <section class="section mod-referral">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title anim fadeInUp" data-wow-duration="0.5s">
+                        Часто задаваемые вопросы
+                    </h2>
+                </div>
+                <div class="col-md-12">
+                    @foreach (var question in ViewContext.DataContext().FaqQuestions.OrderBy(q => q.Position))
+                    {<div class="faq-item anim fadeInUp" data-wow-duration="0.5s">
+                        <div class="title">
+                            @question.Question
+                            <svg class="icon icon-plus">
+                                <use xlink:href="assets/img/symbol/sprite.svg#plus"></use>
+                            </svg>
+                        </div>
+                        <div class="text text-style-1">
+                            @Html.Raw(question.Answer)
+                        </div>
+                    </div>}
+                </div>
+                <div class="col-md-12">
+                    <div class="text-style-1">
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <b>
+                                Если Вы не нашли ответ на интересующий Ваш вопрос о лазерной эпиляции или о решении проблем кожи, то Вы можете задать Ваш вопрос напрямую, <a href="#" class="kallibri underline">нажав сюда</a>, позвонить нам по телефону
+                                <a class="underline" href="tel:944150">944 - 150</a> или записаться на бесплатную консультацию, <a href="#" class="underline ms_booking" data-url="https://w45361.yclients.com">нажав сюда</a>.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>	

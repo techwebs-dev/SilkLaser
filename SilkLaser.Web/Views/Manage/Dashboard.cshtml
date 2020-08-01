@@ -1,0 +1,39 @@
+﻿@using SilkLaser.Web.Classes.Utils
+@model dynamic
+
+@{
+    ViewBag.Title = "Сводка";
+    Layout = "AdminLayout.cshtml";
+    var periodStart = DateTime.Now.AddDays(-14);
+    var periodEnd = DateTime.Now;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jarviswidget" id="wid-invite-user-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-collapsed="false" data-widget-sortable="false">
+            <header>
+                <span class="widget-icon"><i class="fa fa-list"></i></span>
+                <h2>Посещаемость за последние 14 дней с @periodStart.FormatDate() по @periodEnd.FormatDate()</h2>
+            </header>
+            <div>
+                <!-- widget content -->
+                <div class="widget-body">
+                    <div id="visitors-chart-wrapper"></div>
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+        <!-- end widget -->
+    </div>
+</div>
+
+@section PageScripts {
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#visitors-chart-wrapper").load("/manage/dashboard/visits");
+        });
+    </script>
+
+}

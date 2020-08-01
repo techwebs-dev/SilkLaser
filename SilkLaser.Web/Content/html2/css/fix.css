@@ -1,0 +1,67 @@
+﻿.review-author__photo {
+	overflow: hidden;
+}
+
+.review-author__photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.offer {
+	clear: both;
+	padding-bottom: 25px;
+	border-bottom: 1px solid #dcdcdc;
+	margin-bottom: 25px;
+}
+
+.offer .offer-image {
+	float: left;
+	width: 400px;
+}
+
+.offer .offer-image img {
+	width: 100%;
+	height: auto;
+}
+
+.offer .offer-content {
+	margin-left: 430px;
+
+}
+
+.offer .offer-content .title {
+	font-size: 24px;
+    color: #bd9f57;
+    line-height: 30px;
+    vertical-align: top;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    font-family: 'Arimo';
+	padding-top: 15px;
+}
+
+.offer .offer-content .value {
+	font-size: 16px;
+    line-height: 24px;
+    padding: 6px 0 6px 0;
+    font-weight: 400;
+    color: #231f20;
+    letter-spacing: 0.05px;
+}
+
+tr.action {
+	background: #85d7d1 !important;
+	color: white !important;
+}
+
+tr.action td:first-child {
+	position: relative;
+}
+
+@media (min-width: 1200px) {
+	nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .col-menu {
+		border-left: solid 1px #85d7d1 !important;
+	}	
+}

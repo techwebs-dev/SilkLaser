@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <title>title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="assets/css/libs.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    body.loading{
+      overflow: hidden;
+    }
+    .page-preloader{
+      position:fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      overflow: hidden;
+      z-index: 100500
+    }
+    .loader{
+      display: inline-block;
+      line-height: 0;
+      top: 50%;
+      left: 50%;
+      width: 160px;
+      margin-top: -25px;
+      height: 42px;
+      position: absolute;
+      transform:translateX(-50%)
+    }
+
+    .spinner-container {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      margin-left: -80px;
+      width: 160px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .spinner-container:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 1px;
+      transform: translate(-100%, 0);
+      background-color: #bc9e52;
+      animation: loading 3400ms cubic-bezier(.23, 1, .32, 1) infinite;
+      animation-delay: 2s;
+    }
+
+    @keyframes loading {
+      75% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(100%, 0);
+      }
+    }
+
+  </style>
+
+</head>
+<body class="loading">
+<div class="page-preloader">
+  <div class="loader">
+    <div class="logo">
+      <img  src="assets/img/logo.png" alt="img">
+    </div>
+    <div class="spinner-container"></div>
+  </div>
+</div>
+
+<div id="page-wrapper" class="page-wrapper remodal-bg">
+  <!-- Begin header -->
+  <div id="header-outer" class="header-wrap">
+    <header id="header" class="wrapper header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="#" class="logo">
+            <span class="icon">
+              <img  src="assets/img/svg/logo.svg" alt="img">
+            </span>
+              <span class="label">
+              <img src="assets/img/svg/logo-label.svg" alt="img">
+            </span>
+            </a>
+            <div class="nav-wrap">
+              <nav class="navigation">
+                <ul>
+                  <li>
+                    <a class="el-link-sm" href="#">
+                      Лазерная эпиляция
+                      <svg class="icon icon-arrow-d">
+                        <use xlink:href="assets/img/symbol/sprite.svg#arrow-d"></use>
+                      </svg>
+                    </a>
+                    <ul class="drop-menu">
+                      <li><a class="js-page-scroll" href="#advantages">Гарантии Silk</a></li>
+                      <li><a class="js-page-scroll" href="#reviews">Отзывы</a></li>
+                      <li><a class="js-page-scroll" href="#equipment">Оборудование</a></li>
+                      <li><a class="js-page-scroll" href="#process">Процесс эпиляции</a></li>
+                      <li><a class="js-page-scroll" href="#resault">Результат</a></li>
+                      <li><a href="faq.html">Вопросы и ответы</a></li>
+                      <li><a class="js-page-scroll" href="#contraindications">Противопоказания</a></li>
+                      <li><a class="js-page-scroll" href="#preparation">Подготовка и уход после процедуры</a></li>
+                    </ul>
+                  </li>
+                  <li><a class="el-link-sm" href="price.html">Цены</a></li>
+                  <li><a class="js-page-scroll el-link-sm" href="#contact">Контакты</a></li>
+                </ul>
+              </nav>
+              <a href="#modal" class="el-btn mod-white mod-sm">Записаться на <span class="mob-hide">бесплатный </span>прием</a>
+              <a href="tel:944150" class="phone el-link-sm">944-150</a>
+            </div>
+
+            <a href="#" class="menu js-menu">
+              <svg class="icon icon-menu">
+                 <use xlink:href="assets/img/symbol/sprite.svg#menu"></use>
+              </svg>
+              <svg class="icon icon-cancel">
+                 <use xlink:href="assets/img/symbol/sprite.svg#cancel"></use>
+              </svg>
+            </a>
+            <a href="tel:944150" class="call">
+              <svg class="icon icon-call">
+                <use xlink:href="assets/img/symbol/sprite.svg#call"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+
+  <!-- End header -->
+  <!-- Begin page body -->
+  <div id="page-body" class="page-body">
+    <section class="section mod-referral">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <h2 class="section-title anim fadeInUp" data-wow-duration="0.5s">
+              Политика конфиденциальности вебсайта
+              лазеоной клиники Silk (ООО "Лазерные технологии»)
+            </h2>
+          </div>
+          <div class="col-md-12 text-left">
+            <div class="text-style-1">
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Последнее обновление: 01.2017
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Настоящая политика конфиденциальности касается использования данного вебсайта, который принадлежит и управляется компанией ООО "Лазерные Технологии" (далее «ЛТ»), юридический адрес: г. Хабаровск, квартал Амур, д.18; фактический адрес: г. Хабаровск, Амурский бульвар, д. 3; ОГРН 1162724073490; ИНН 2724214071; КПП 272401001.
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Обработка данных
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Компания ЛТ соблюдает права на неприкосновенность частной жизни посетителей вебсайта и признает важность защиты их персональных данных. Посетителям не требуется передавать компании ЛТ свои персональные данные для пользования данным вебсайтом. В то же время при посещении данного вебсайта интернет-браузер каждого посетителя передает на сервера компании ЛТ определенные сведения, включая дату и время посещения, название запрашиваемого файла, страницу вебсайта,
+                с которой приходит пользователь, состояние, используемые браузер и операционную систему, IP-адрес устройства и размер передаваемых данных. Данные сведения сохраняются в журналах подключений в течение ограниченного времени для обеспечения безопасности и надлежащей работы вебсайта, а также для сбора статистической информации.
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Cookie
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                ЛТ вправе размещать файлы cookie на своем вебсайте. Файлы cookie — это небольшие файлы, которые загружаются на ваш компьютер и помогают обеспечить нормальное и безопасное функционирование нашего вебсайта (файлы cookie безопасности и файлы cookie сеанса) и собирать информацию о продуктах, которыми интересуются наши посетители сайта, а также о навигации, которую они используют на нашем вебсайте, чтобы сделать наши предложения более выгодными для наших пользователей (файлы tracking cookie; см. ниже).
+              </p>
+
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Вы можете отключить файлы cookie или настроить ваш браузер для предупреждения вас при получении файлов cookie. Однако, если вы отключите файлы cookie,
+                вы не сможете пользоваться всеми функциями данного вебсайта. Кроме того, вы можете отключить только файлы tracking cookie. См. подробную информацию ниже.
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Файлы tracking cookie
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                На нашем вебсайте мы используем собственные файлы tracking cookie, которые помогают нам понять, как сделать наши сервисы более привлекательными для клиентов. Файлы tracking cookie помогают узнать, как долго вы просматривали страницу или на какие именно страницы вы заходили.
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Пользовательские сообщения
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Если вы отправите компании ЛТ сообщение по электронной почте или иному каналу связи, компания ЛТ может сохранить это сообщение для обработки вашего запроса. Большая часть сообщений электронной почты удаляется после ответа на них. В случае возникновения у компании ЛТ юридической обязанности раскрыть информацию, полученную от пользователей, в рамках судебного или административного процесса, компания ЛТ примет все необходимые меры для удаления персональных данных
+                из раскрываемой информации при наличии такой возможности.
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Рассылка от ЛТ
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Если вы подпишитесь на рассылку от ЛТ, на адрес вашей электронной почты и/или мобильный телефон, в зависимости от вашей подписки, будут приходить новостные рассылки и информация о новых услугах, предложениях и скидках от ЛТ. Вы можете отказаться от данной услуги в любое время, пройдя по ссылке, указанной
+                в полученной информационной рассылке.
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                Контакты
+              </p>
+              <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                4.1.	По всем вопросам, связанным с положениями настоящей Политики конфиденциальности вебсайта, просьба обращаться по адресу электронной почты: info@silklaser.ru
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- End page body -->
+  <!-- Begin footer -->
+  <footer id="footer" class="wrapper footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="nav">
+            <ul>
+              <li><a class="el-link-sm" href="faq.html">Вопросы и ответы</a></li>
+              <li><a class="el-link-sm" href="certificates.html">Подарочные сертификаты</a></li>
+              <li><a class="el-link-sm" href="referral.html">Реферальная система</a></li>
+              <li><a class="el-link-sm" href="#">Правовая информация</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="cop">© 2017 - 2018 Silk.</p>
+        </div>
+        <div class="col-sm-6 text-xs-center text-sm-center text-md-right text-lg-right">
+          <p class="polis"><a href="#" class="el-link-sm">Условия и положения</a> | <a href="privacy-policy.html" class="el-link-sm">Политика конфиденциальности</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="remodal" data-remodal-id="modal">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h2>Запишитесь на
+      <b>бесплатную консультацию</b>
+      в Лазерную клинику Silk</h2>
+    <form action="#">
+      <label class="el-input">
+        <input type="text" placeholder="Ваш Телефон *">
+      </label>
+      <div class="btn-wrap">
+        <button data-remodal-action="confirm" class="el-btn">ЗАПИСАТЬСЯ СЕЙЧАС</button>
+      </div>
+    </form>
+  </div>
+  <!-- End footer -->
+</div>
+<!-- Begin script -->
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCShgF5B0Tk-6FprwqYN2E_J8gdiKI4I-U&v=3.exp"></script>
+<script  src="assets/js/libs.js"></script>
+<script  src="assets/js/scripts.js"></script>
+<script>
+  $(document).ready(function () {
+    $('.page-preloader .loader').stop(true, true).delay(2000).animate({ opacity: '0' }, 200, 'easeOutExpo', function () {
+      document.body.classList.remove('loading');
+      $('.page-preloader').fadeOut('slow');
+    });
+  });
+</script>
+<!-- End script -->
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿@using SilkLaser.Web.Classes.Enums
+@using SilkLaser.Web.Classes.Ext
+@using SilkLaser.Web.Classes.Utils
+@model System.Collections.Generic.List<SilkLaser.Web.Classes.Entities.Price>
+
+@{
+    ViewBag.Title = "Цены";
+    Layout = "AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="jarviswidget" id="wid-prices-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-collapsed="false" data-widget-sortable="false">
+                    <header>
+                        <span class="widget-icon"><i class="fa fa-table"></i></span>
+                        <h2>@ViewBag.Title</h2>
+                    </header>
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+                            <p>
+                                <a class="btn btn-success" href="/manage/prices/new">
+                                    <i class="fa fa-plus"></i> <span class="hidden-mobile">Добавить новую цену</span>
+                                </a>
+                            </p>
+                            <table class="table table-bordered table-hover" id="events-table">
+                                <thead>
+                                    <tr>
+                                        <th>Ид</th>
+                                        <th>Название</th>
+                                        <th>Группа</th>
+                                        <th>Базовая цена</th>
+                                        <th>Добавлен</th>
+                                        <th>Отредактирован</th>
+                                        <th style="width: 45px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Count == 0)
+                                    {
+                                    <tr>
+                                        <td colspan="7">Не найдено цен в системе</td>
+                                    </tr>}
+                                    else
+                                    {
+                                        foreach (var price in Model)
+                                        {
+                                        <tr data-id="@price.Id">
+                                            <td>
+                                                @price.Id
+                                            </td>
+                                            <td>
+                                                <a href="/manage/prices/@price.Id/edit" class="tip" title="Редактировать основную информацию цены @price.Title">@price.Title</a>
+                                            </td>
+                                            <td>
+                                                @(((BodyGroup)price.Group).GetEnumMemberName())
+                                            </td>
+                                            <td>
+                                                @price.BasePrice.ToString("C")
+                                            </td>
+                                            <td>
+                                                <span class="tip" title="Создал: @price.CreatedBy">@ViewContext.CurrentUser().ConvertDateToTimeZone(price.DateCreated).FormatDateTime()</span>
+                                            </td>
+                                            <td>
+                                                <span class="tip" title="Редактировал: @price.ModifiedBy">@ViewContext.CurrentUser().ConvertDateToTimeZone(price.DateModified).FormatDateTime()</span>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-gear fa-lg"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu pull-right">
+                                                        <li>
+                                                            <a href="/manage/prices/@price.Id/edit">Редактировать</a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a href="/manage/prices/@price.Id/delete" onclick="return confirm('Вы действительно хотите удалить этот ценник?')">Удалить</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>}
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </div>
+        </div>
+    </div>
+</div>

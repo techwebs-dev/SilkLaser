@@ -1,0 +1,72 @@
+﻿@using SilkLaser.Web.Classes.Utils
+@model SilkLaser.Web.Models.DashboardVisitsStatisticsModel
+
+<div id="visits-chart" style="height: 500px">
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#visits-chart").highcharts({
+            credits: {
+                enabled: false
+            },
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: 'Отчет о посещаемости с @Model.PeriodStart.FormatDate() по @Model.PeriodEnd.FormatDate()'
+            },
+            xAxis: {
+                type: 'datetime',
+            },
+            yAxis: {
+                title: {
+                    text: 'Посещаемость'
+                },
+                min: 0,
+                minorGridLineColor: '#C5EEFA',
+                minorTickInterval: 'auto',
+                minTickInterval: 1
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                enabled: true
+            },
+            series: [
+                {
+                    name: 'Просмотры страниц',
+                    data: [
+                        @foreach(var item in Model.DataItems)
+                        {
+                            long time = item.Date.Date.ToUnixTime();
+                            <text>[@time,@item.PageViews],</text>
+                        }
+                    ]
+                },
+                {
+                    name: 'Визиты на сайт',
+                    data: [
+                        @foreach(var item in Model.DataItems)
+                        {
+                            long time = item.Date.Date.ToUnixTime();
+                            <text>[@time,@item.Visits],</text>
+                        }
+                    ]
+                },
+                {
+                    name: 'Посетители',
+                    data: [
+                        @foreach(var item in Model.DataItems)
+                        {
+                            long time = item.Date.Date.ToUnixTime();
+                            <text>[@time,@item.Visitors],</text>
+                        }
+                    ]
+                }
+            ]
+        });
+    });
+</script>

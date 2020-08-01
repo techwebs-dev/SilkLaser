@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <title>title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="assets/css/libs.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    body.loading{
+      overflow: hidden;
+    }
+    .page-preloader{
+      position:fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      overflow: hidden;
+      z-index: 100500
+    }
+    .loader{
+      display: inline-block;
+      line-height: 0;
+      top: 50%;
+      left: 50%;
+      width: 160px;
+      margin-top: -25px;
+      height: 42px;
+      position: absolute;
+      transform:translateX(-50%)
+    }
+
+    .spinner-container {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      margin-left: -80px;
+      width: 160px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .spinner-container:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 1px;
+      transform: translate(-100%, 0);
+      background-color: #bc9e52;
+      animation: loading 3400ms cubic-bezier(.23, 1, .32, 1) infinite;
+      animation-delay: 2s;
+    }
+
+    @keyframes loading {
+      75% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(100%, 0);
+      }
+    }
+
+  </style>
+
+</head>
+<body class="loading">
+<div class="page-preloader">
+  <div class="loader">
+    <div class="logo">
+      <img  src="assets/img/logo.png" alt="img">
+    </div>
+    <div class="spinner-container"></div>
+  </div>
+</div>
+
+<div id="page-wrapper" class="page-wrapper remodal-bg">
+  <!-- Begin header -->
+  <div id="header-outer" class="header-wrap">
+    <header id="header" class="wrapper header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="#" class="logo">
+            <span class="icon">
+              <img  src="assets/img/svg/logo.svg" alt="img">
+            </span>
+              <span class="label">
+              <img src="assets/img/svg/logo-label.svg" alt="img">
+            </span>
+            </a>
+            <div class="nav-wrap">
+              <nav class="navigation">
+                <ul>
+                  <li>
+                    <a class="el-link-sm" href="#">
+                      Лазерная эпиляция
+                      <svg class="icon icon-arrow-d">
+                        <use xlink:href="assets/img/symbol/sprite.svg#arrow-d"></use>
+                      </svg>
+                    </a>
+                    <ul class="drop-menu">
+                      <li><a class="js-page-scroll" href="#advantages">Гарантии Silk</a></li>
+                      <li><a class="js-page-scroll" href="#reviews">Отзывы</a></li>
+                      <li><a class="js-page-scroll" href="#equipment">Оборудование</a></li>
+                      <li><a class="js-page-scroll" href="#process">Процесс эпиляции</a></li>
+                      <li><a class="js-page-scroll" href="#resault">Результат</a></li>
+                      <li><a href="faq.html">Вопросы и ответы</a></li>
+                      <li><a class="js-page-scroll" href="#contraindications">Противопоказания</a></li>
+                      <li><a class="js-page-scroll" href="#preparation">Подготовка и уход после процедуры</a></li>
+                    </ul>
+                  </li>
+                  <li><a class="el-link-sm" href="price.html">Цены</a></li>
+                  <li><a class="js-page-scroll el-link-sm" href="#contact">Контакты</a></li>
+                </ul>
+              </nav>
+              <a href="#modal" class="el-btn mod-white mod-sm">Записаться на <span class="mob-hide">бесплатный </span>прием</a>
+              <a href="tel:944150" class="phone el-link-sm">944-150</a>
+            </div>
+
+            <a href="#" class="menu js-menu">
+              <svg class="icon icon-menu">
+                 <use xlink:href="assets/img/symbol/sprite.svg#menu"></use>
+              </svg>
+              <svg class="icon icon-cancel">
+                 <use xlink:href="assets/img/symbol/sprite.svg#cancel"></use>
+              </svg>
+            </a>
+            <a href="tel:944150" class="call">
+              <svg class="icon icon-call">
+                <use xlink:href="assets/img/symbol/sprite.svg#call"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+
+  <!-- End header -->
+  <!-- Begin page body -->
+  <div id="page-body" class="page-body">
+    <section class="section mod-referral">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2 class="section-title anim fadeInUp" data-wow-duration="0.5s">
+              Реферальная система
+            </h2>
+          </div>
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <h3  class="anim fadeInUp" data-wow-duration="0.5s">Приведи друга и получи <span class="popupgu" title="1000 рублей за каждого приведенного друга
+Вы получите 1 000 рублей на любую процедуру, если Вы являетесь клиентом нашей клиники, а Ваш друг еще не
+является нашим клиентом и сделал любую процедуру в Лазерной клинике Silk. Для этого Ваш друг должен указать
+Вашу фамилию и имя при заполнении Медицинской карты.">1&nbsp;000&nbsp;рублей</span> на любую процедуру*</h3>
+            <div class="text-style-1">
+              <p class="anim fadeInUp" data-wow-duration="0.5s">
+                * Вы получите 1&nbsp;000&nbsp;рублей на любую процедуру, если Вы являетесь клиентом нашей клиники,
+                а Ваш друг еще не является нашим клиентом и сделал любую процедуру в Лазерной клинике Silk. Для этого Ваш друг должен указать Вашу фамилию и имя при заполнении Медицинской карты.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- End page body -->
+  <!-- Begin footer -->
+  <footer id="footer" class="wrapper footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="nav">
+            <ul>
+              <li><a class="el-link-sm" href="faq.html">Вопросы и ответы</a></li>
+              <li><a class="el-link-sm" href="certificates.html">Подарочные сертификаты</a></li>
+              <li><a class="el-link-sm" href="referral.html">Реферальная система</a></li>
+              <li><a class="el-link-sm" href="#">Правовая информация</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="cop">© 2017 - 2018 Silk.</p>
+        </div>
+        <div class="col-sm-6 text-xs-center text-sm-center text-md-right text-lg-right">
+          <p class="polis"><a href="#" class="el-link-sm">Условия и положения</a> | <a href="privacy-policy.html" class="el-link-sm">Политика конфиденциальности</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="remodal" data-remodal-id="modal">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h2>Запишитесь на
+      <b>бесплатную консультацию</b>
+      в Лазерную клинику Silk</h2>
+    <form action="#">
+      <label class="el-input">
+        <input type="text" placeholder="Ваш Телефон *">
+      </label>
+      <div class="btn-wrap">
+        <button data-remodal-action="confirm" class="el-btn">ЗАПИСАТЬСЯ СЕЙЧАС</button>
+      </div>
+    </form>
+  </div>
+  <!-- End footer -->
+</div>
+<!-- Begin script -->
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCShgF5B0Tk-6FprwqYN2E_J8gdiKI4I-U&v=3.exp"></script>
+<script  src="assets/js/libs.js"></script>
+<script  src="assets/js/scripts.js"></script>
+<script>
+  $(document).ready(function () {
+    $('.page-preloader .loader').stop(true, true).delay(2000).animate({ opacity: '0' }, 200, 'easeOutExpo', function () {
+      document.body.classList.remove('loading');
+      $('.page-preloader').fadeOut('slow');
+    });
+  });
+</script>
+<!-- End script -->
+</body>
+</html>

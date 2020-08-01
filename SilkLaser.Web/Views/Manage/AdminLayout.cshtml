@@ -1,0 +1,482 @@
+﻿@using SilkLaser.Web.Classes.Ext
+@using SilkLaser.Web.Classes.UI
+@using SilkLaser.Web.Controllers
+@{
+    Layout = null;
+    var currentUser = ViewContext.CurrentUser();
+}
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title | SilkLaser Admin Panel v1.0 </title>
+    <meta name="description" content="Система управления содержимым сайта SilkLaser">
+    <meta name="author" content="Yuri Korshev, http://softgears.ru">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- #CSS Links -->
+    <!-- Basic Styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/content/SmartAdmin/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/content/SmartAdmin/css/font-awesome.min.css">
+
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/content/SmartAdmin/css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/content/SmartAdmin/css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/content/SmartAdmin/css/smartadmin-skins.min.css">
+
+    <!-- SmartAdmin RTL Support -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/content/SmartAdmin/css/smartadmin-rtl.min.css">
+
+    <!-- We recommend you use "your_style.css" to override SmartAdmin
+         specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+    <link rel="stylesheet" type="text/css" media="screen" href="/content/SmartAdmin/css/your_style.css"> -->
+    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/content/SmartAdmin/css/demo.min.css">
+
+    <!-- #FAVICONS -->
+    <link rel="shortcut icon" href="/content/SmartAdmin/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/content/SmartAdmin/img/favicon/favicon.ico" type="image/x-icon">
+
+    <!-- #GOOGLE FONT -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+    <!-- #APP SCREEN / ICONS -->
+    <!-- Specifying a Webpage Icon for Web Clip
+         Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+    <link rel="apple-touch-icon" href="/content/SmartAdmin/img/splash/sptouch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/content/SmartAdmin/img/splash/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/content/SmartAdmin/img/splash/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/content/SmartAdmin/img/splash/touch-icon-ipad-retina.png">
+
+    <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" href="/content/SmartAdmin/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="/content/SmartAdmin/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="/content/SmartAdmin/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+</head>
+
+
+<!-- #BODY -->
+<body class="">
+
+    <!-- #HEADER -->
+    <header id="header">
+        <div id="logo-group">
+            <span id="logo"> <img src="/content/SmartAdmin/img/logo.png" alt="SoftGears Control Panel v2.0"> </span>
+        </div>
+
+
+        <!-- #TOGGLE LAYOUT BUTTONS -->
+        <!-- pulled right: nav area -->
+        <div class="pull-right">
+
+            <!-- collapse menu button -->
+            <div id="hide-menu" class="btn-header pull-right">
+                <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+            </div>
+            <!-- end collapse menu -->
+            <!-- #MOBILE -->
+            <!-- Top menu profile link : this shows only when top menu is active -->
+            <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+                <li class="">
+                    <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+                        <img src="@currentUser.GetAvatar()" alt="John Doe" class="@currentUser.GetFio()" />
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="/my/profile" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>П</u>рофиль</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/my/tasks" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-tasks"></i> <u>З</u>адачи</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/my/payments" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-money"></i> <u>В</u>ыплаты</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- logout button -->
+            <div id="logout" class="btn-header transparent pull-right">
+                <span> <a href="/manage/logout" title="Выход" data-action="userLogout" data-logout-msg="Вы действительно хотите выйти из аккаунта?"><i class="fa fa-sign-out"></i></a> </span>
+            </div>
+            <!-- end logout button -->
+            <!-- search mobile button (this is hidden till mobile view port) -->
+            <div id="search-mobile" class="btn-header transparent pull-right">
+                <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+            </div>
+            <!-- end search mobile button -->
+            <!-- #SEARCH -->
+            <!-- input: search field -->
+            <form action="/search" class="header-search pull-right">
+                <input id="search-fld" type="text" name="param" placeholder="Поиск статей, игроков и т.д.">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+                <a href="javascript:void(0);" id="cancel-search-js" title="Отмена поиска"><i class="fa fa-times"></i></a>
+            </form>
+            <!-- end input: search field -->
+            <!-- fullscreen button -->
+            <div id="fullscreen" class="btn-header transparent pull-right">
+                <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+            </div>
+            <!-- end fullscreen button -->
+        </div>
+        <!-- end pulled right: nav area -->
+    </header>
+    <!-- END HEADER -->
+    <!-- #NAVIGATION -->
+    <!-- Left panel : Navigation area -->
+    <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+    <aside id="left-panel">
+
+        <!-- User info -->
+        <div class="login-info">
+            <span>
+                <!-- User image size is adjusted inside CSS, it should stay as it -->
+
+                <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+                    <img src="@currentUser.GetAvatar()" alt="me" class="online" />
+                    <span>
+                        @currentUser.GetFioSmall()
+                    </span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+
+            </span>
+        </div>
+        <!-- end user info -->
+
+        <nav>
+            <!--
+            NOTE: Notice the gaps after each icon usage <i></i>..
+            Please note that these links work a bit different than
+            traditional href="" links. See documentation for details.
+            -->
+
+            <ul>
+                <li id="dashboard-mi" data-icon="fa-home">
+                    <a href="/manage/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Сводная статистика</span></a>
+                </li>
+                <li id="pages-mi" data-icon="fa-html5">
+                    <a href="/manage/html-pages" title="Страницы"><i class="fa fa-lg fa-fw fa-html5"></i> <span class="menu-item-parent">HTML страницы</span></a>
+                </li>
+                <li id="prices-mi" data-icon="fa-money">
+                    <a href="/manage/prices" title="Ценники"><i class="fa fa-lg fa-fw fa-money"></i> <span class="menu-item-parent">Цены</span></a>
+                </li>
+                <li id="faq-mi" data-icon="fa-question">
+                    <a href="/manage/faq" title="Вопросы в FAQ"><i class="fa fa-lg fa-fw fa-question"></i> <span class="menu-item-parent">Вопросы в FAQ</span></a>
+                </li>
+                <li id="reviews-mi" data-icon="fa-pencil">
+                    <a href="/manage/reviews" title="Отзывы"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Отзывы</span></a>
+                </li>
+                <li id="offers-mi" data-icon="fa-percent">
+                    <a href="/manage/offers" title="Отзывы"><i class="fa fa-lg fa-fw fa-percent"></i> <span class="menu-item-parent">Акции</span></a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <span class="minifyme" data-action="minifyMenu">
+            <i class="fa fa-arrow-circle-left hit"></i>
+        </span>
+
+    </aside>
+    <!-- END NAVIGATION -->
+    <!-- MAIN PANEL -->
+    <div id="main" role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                @{
+                    var navigationItems = (this.ViewContext.Controller as BaseController).NavigationChain;
+                }
+                @foreach (var item in navigationItems)
+                {
+                    <li>@item.Title</li>
+                }
+            </ol>
+            <!-- end breadcrumb -->
+
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+            @{
+                var mgr = new UINotificationManager();
+                var notificationItems = mgr.GetOrCreateNotificationStack();
+                mgr.ClearNotificationStack();
+            }
+            @if (navigationItems.Count > 0)
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        @foreach (var item in notificationItems)
+                        {
+                            switch (item.ItemType)
+                            {
+                                case NotificationItemType.Success:
+                                    <div class="alert alert-success fade in">
+                                        <button class="close" data-dismiss="alert">
+                                            ×
+                                        </button>
+                                        <i class="fa-fw fa fa-check"></i>
+                                        <strong>Успех!</strong> @item.Message
+                                    </div>
+                                    break;
+                                case NotificationItemType.Error:
+                                <div class="alert alert-danger fade in">
+                                    <button class="close" data-dismiss="alert">
+                                        ×
+                                    </button>
+                                    <i class="fa-fw fa fa-times"></i>
+                                    <strong>Ошибка!</strong> @item.Message
+                                </div>
+                                    break;
+                                case NotificationItemType.Warning:
+                                <div class="alert alert-warning fade in">
+                                    <button class="close" data-dismiss="alert">
+                                        ×
+                                    </button>
+                                    <i class="fa-fw fa fa-warning"></i>
+                                    <strong>Внимание.</strong> @item.Message
+                                </div>
+                                    break;
+                                default:
+                                    throw new ArgumentOutOfRangeException();
+                            }
+                        }
+                    </div>
+                </div>
+            }
+
+            <!-- row -->
+            <div class="row">
+
+                <!-- col -->
+                <div class="col-lg-12">
+                    <h1 class="page-title txt-color-blueDark">
+
+                        <!-- PAGE HEADER -->
+                        <i class="fa-fw fa fa-home" id="current-page-icon"></i>
+                        @ViewBag.Title
+                    </h1>
+                </div>
+                <!-- end col -->
+
+            </div>
+            <!-- end row -->
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+                <div class="row">
+
+                    <!-- a blank row to get started -->
+                    <div class="col-sm-12">
+                        @RenderBody()
+                    </div>
+
+                </div>
+
+                <!-- end row -->
+
+            </section>
+            <!-- end widget grid -->
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    <!-- END MAIN PANEL -->
+    <!-- PAGE FOOTER -->
+    <div class="page-footer">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <span class="txt-color-white">SoftGears Control Panel v2.0<span class="hidden-xs"> - система управления содержимым сайта</span> © 2012-@DateTime.Now.Year</span>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 text-right hidden-xs">
+                <div class="txt-color-white inline-block">
+                    <i class="txt-color-blueLight hidden-mobile">Последний вход <i class="fa fa-clock-o"></i> <strong>@currentUser.ConvertDateToTimeZone(currentUser.LastSeen) &nbsp;</strong> </i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE FOOTER -->
+    <!--================================================== -->
+    <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+    <script data-pace-options='{ "restartOnRequestAfter": true }' src="/content/SmartAdmin/js/plugin/pace/pace.min.js"></script>
+
+    <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/content/SmartAdmin/js/libs/jquery-2.1.1.min.js"><\/script>');
+        }
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script>
+        if (!window.jQuery.ui) {
+            document.write('<script src="/content/SmartAdmin/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+        }
+    </script>
+
+    <!-- IMPORTANT: APP CONFIG -->
+    <script src="/content/SmartAdmin/js/app.config.js"></script>
+
+    <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+    <script src="/content/SmartAdmin/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="/content/SmartAdmin/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- CUSTOM NOTIFICATION -->
+    <script src="/content/SmartAdmin/js/notification/SmartNotification.min.js"></script>
+
+    <!-- JARVIS WIDGETS -->
+    <script src="/content/SmartAdmin/js/smartwidgets/jarvis.widget.min.js"></script>
+
+    <!-- EASY PIE CHARTS -->
+    <script src="/content/SmartAdmin/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+    <!-- SPARKLINES -->
+    <script src="/content/SmartAdmin/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- JQUERY VALIDATE -->
+    <script src="/content/SmartAdmin/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+    <!-- JQUERY MASKED INPUT -->
+    <script src="/content/SmartAdmin/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+    <!-- JQUERY SELECT2 INPUT -->
+    <script src="/content/SmartAdmin/js/plugin/select2/select2.min.js"></script>
+
+    <!-- JQUERY UI + Bootstrap Slider -->
+    <script src="/content/SmartAdmin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+    <!-- browser msie issue fix -->
+    <script src="/content/SmartAdmin/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+    <!-- FastClick: For mobile devices -->
+    <script src="/content/SmartAdmin/js/plugin/fastclick/fastclick.min.js"></script>
+
+    <!--[if IE 8]>
+
+    <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+    <![endif]-->
+    <!-- MAIN APP JS FILE -->
+    <script src="/content/SmartAdmin/js/app.min.js"></script>
+
+    <!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+    <!-- Voice command : plugin -->
+    <script src="/content/SmartAdmin/js/speech/voicecommand.min.js"></script>
+
+    <!-- SmartChat UI : plugin -->
+    <script src="/content/SmartAdmin/js/smart-chat-ui/smart.chat.ui.min.js"></script>
+    <script src="/content/SmartAdmin/js/smart-chat-ui/smart.chat.manager.min.js"></script>
+
+    <!-- PAGE RELATED PLUGIN(S)
+    <script src="..."></script>-->
+    <!-- Tiny MCE -->
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="/Content/SmartAdmin/js/plugin/tinymce/ru_RU.js"></script>
+    <script src="~/Content/highcharts/highcharts.js"></script>
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            lang: {
+                months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                shortMonths: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сеп', 'Окт', 'Ноя', 'Дек'],
+                weekdays: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+            // Устанавливаем активную ссылку
+            var currentRequestPath = '@(ViewBag.RootUrl ?? Request.Path)';
+            var activeA = $("nav a[href='" + currentRequestPath + "']");
+            if (activeA.length > 0) {
+                activeA = activeA.eq(0);
+                activeA.parent().addClass("active");
+                if (activeA.parent().data("icon") !== undefined) {
+                    $("#current-page-icon").removeClass("fa-home").addClass(activeA.parent().data("icon"));
+                }
+                if (activeA.parent().parent().hasClass("sm")) {
+                    activeA.parent().parent().show().parent().addClass("open").find(".collapse-sign").find(".fa-plus-square-o").removeClass("fa-plus-square-o").addClass("fa-minus-square-o");
+                    $("#current-page-icon").removeClass("fa-home").addClass(activeA.parent().parent().parent().data("icon"));
+                }
+            }
+
+            // Тултипы
+            $(".tip").tooltip();
+
+            // HTML редактор и файловый менеджер
+            tinymce.init({
+                selector: '.html',
+                relative_urls: false,
+                height: 500,
+                plugins: [
+                  'advlist autolink lists link image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table contextmenu paste code'
+                ],
+                toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                file_browser_callback: RoxyFileBrowser
+            });
+            function RoxyFileBrowser(field_name, url, type, win) {
+                var roxyFileman = '/Content/fileman/index.html';
+                if (roxyFileman.indexOf("?") < 0) {
+                    roxyFileman += "?type=" + type;
+                }
+                else {
+                    roxyFileman += "&type=" + type;
+                }
+                roxyFileman += '&input=' + field_name + '&value=' + win.document.getElementById(field_name).value;
+                if (tinyMCE.activeEditor.settings.language) {
+                    roxyFileman += '&langCode=' + tinyMCE.activeEditor.settings.language;
+                }
+                tinyMCE.activeEditor.windowManager.open({
+                    file: roxyFileman,
+                    title: 'Обзор файлов',
+                    width: 850,
+                    height: 650,
+                    resizable: "yes",
+                    plugins: "media",
+                    inline: "yes",
+                    close_previous: "no"
+                }, { window: win, input: field_name });
+                return false;
+            }
+        })
+
+    </script>
+    @RenderSection("PageScripts", false)
+</body>
+
+</html>

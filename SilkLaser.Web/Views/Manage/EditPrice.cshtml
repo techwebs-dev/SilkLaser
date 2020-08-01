@@ -1,0 +1,191 @@
+﻿@using SilkLaser.Web.Classes.Enums
+@model SilkLaser.Web.Classes.Entities.Price
+
+@{
+    ViewBag.Title = Model.Id <= 0 ? "Создание ценника":"Редактирование ценника на "+Model.Title;
+    Layout = "AdminLayout.cshtml";
+    ViewBag.RootUrl = "/manage/prices";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jarviswidget" id="wid-edit-cometition-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-collapsed="false" data-widget-sortable="false">
+            <header>
+                <span class="widget-icon"><i class="fa fa-list"></i></span>
+                <h2>Свойства ценника</h2>
+            </header>
+            <div>
+                <!-- widget content -->
+                <div class="widget-body">
+                    <form role="form" class="form-horizontal" id="item-form" method="POST" action="/manage/prices/save" enctype="multipart/form-data">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <fieldset>
+                            <legend>Общее</legend>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Группа</label>
+                                <div class="col-md-10">
+                                    <select class="form-control" name="Group">
+                                        @foreach (BodyGroup type in Enum.GetValues(typeof(BodyGroup)))
+                                        {
+                                            var t = (short)type;
+                                            <option value="@t" @(Model.Group == t ? "selected=selected" : "")>@type.GetEnumMemberName()</option>}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Наименование</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="Title" placeholder="Введите наименование части тела" value="@Model.Title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Доп. наименование (которое в скобках в таблице)</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="SubTitle" placeholder="" value="@Model.SubTitle">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Фотография</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="file" class="btn btn-default" name="Image" />
+                                    @if (Model.Image != null)
+                                    {
+                                        <p>
+                                            <img src="@Model.Image" />
+                                        </p>}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Базовая цена</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="BasePrice" placeholder="Введите базовую цену на одну процедуру без учета акции" value="@Model.BasePrice.ToString("0")">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Базовая цена по акции</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="BasePriceOffer" value="@(Model.BasePriceOffer.HasValue ? Model.BasePriceOffer.Value.ToString("0") : "")">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Цена при курсе</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="CoursePrice" placeholder="Введите цену на одну процедуру при оплате курса" value="@(Model.CoursePrice.HasValue ? Model.CoursePrice.Value.ToString("0") : "")">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Цена при курсе по акции</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="CoursePriceOffer" value="@(Model.CoursePriceOffer.HasValue ? Model.CoursePriceOffer.Value.ToString("0") : "")">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Цена корректирующей процедуры</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="CoursePrice" placeholder="Введите цену на одну корректирующую процедуру" value="@(Model.CoursePrice.HasValue ? Model.CoursePrice.Value.ToString("0") : "")">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Цена корректирующей процедуры по акции</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="CoursePriceOffer" value="@(Model.CoursePriceOffer.HasValue ? Model.CoursePriceOffer.Value.ToString("0") : "")">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Длительность сеанса</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="Duration" value="@Model.Duration"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Количество сеансов</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="ProceduresCount" value="@Model.ProceduresCount"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Интервал между сеансами</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="ProceduresInterval" value="@Model.ProceduresInterval"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>SEO</legend>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Заголовок в HTML</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="HTMLTitle" placeholder="Введите заголовок страницы который вставляется в HTML" value="@Model.HTMLTitle">
+                                    <span class="help-block">Данный заголовок подставляется в тег TITLE в коде страницы</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Meta Description</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="MetaDescription" placeholder="Введите описание страницы в мета тегах" value="@Model.MetaDescription">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Meta Keywords</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="MetaKeywords" placeholder="Введите ключевые слова для страницы в мета тегах" value="@Model.MetaKeywords">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Описание</legend>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <textarea class="form-control html" id="editor-field" name="Description" rows="20">@Model.Description</textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" type="submit">
+                                        <i class="fa fa-save"></i>
+                                        Сохранить
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+        <!-- end widget -->
+    </div>
+</div>
+@section PageScripts {
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#item-form").validate({
+                errorClass: "error",
+                errorElement: "em",
+                highlight: function (element) {
+                    $(element).parent().removeClass('state-success').addClass("state-error");
+                    $(element).removeClass('valid');
+                },
+                unhighlight: function (element) {
+                    $(element).parent().removeClass("state-error").addClass('state-success');
+                    $(element).addClass('valid');
+                },
+                rules: {
+                    Title: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    BasePrice: {
+                        required: true,
+                        digits: true
+                    },
+                }
+            });
+        });
+    </script>
+
+}

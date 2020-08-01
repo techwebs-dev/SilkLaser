@@ -1,0 +1,135 @@
+﻿@using SilkLaser.Web.Classes.Ext
+@using SilkLaser.Web.Classes.Utils
+@model System.Collections.Generic.List<SilkLaser.Web.Classes.Entities.Review>
+
+@{
+    ViewBag.Title = "Отзывы";
+    Layout = "AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="jarviswidget" id="wid-questions-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-collapsed="false" data-widget-sortable="false">
+                    <header>
+                        <span class="widget-icon"><i class="fa fa-table"></i></span>
+                        <h2>@ViewBag.Title</h2>
+                    </header>
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+                            <table class="table table-bordered table-hover" id="events-table">
+                                <thead>
+                                    <tr>
+                                        <th>Ид</th>
+                                        <th>Тема</th>
+                                        <th>Автор</th>
+                                        <th>Опубликован</th>
+                                        <th>Текст</th>
+                                        <th>IP</th>
+                                        <th>Дата</th>
+                                        <th style="width: 45px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Count == 0)
+                                    {
+                                    <tr>
+                                        <td colspan="8">Не найдено отзывов в системе</td>
+                                    </tr>}
+                                    else
+                                    {
+                                        foreach (var review in Model)
+                                        {
+                                        <tr data-id="@review.Id" class="review">
+                                            <td>
+                                                @review.Id
+                                            </td>
+                                            <td>
+                                                @review.Category
+                                            </td>
+                                            <td class="text-center">
+                                                @if (review.Image != null)
+                                                {
+                                                    <p><img src="@review.Image" /></p>
+                                                }
+                                                <p>
+                                                    @review.Name
+                                                </p>
+                                                @if (review.Phone != null)
+                                                {
+                                                    <p>@review.Phone</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <span class="label @(review.Published ? "label-success":"label-danger")">@(review.Published ? "ДА":"НЕТ")</span>
+                                            </td>
+                                            <td>
+                                                @review.Content
+                                            </td>
+                                            <td>
+                                                @review.CreatorIP
+                                            </td>
+                                            <td>
+                                                <span>@ViewContext.CurrentUser().ConvertDateToTimeZone(review.DateCreated).FormatDateTime()</span>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-gear fa-lg"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu pull-right">
+                                                        <li>
+                                                            <a href="/manage/reviews/@review.Id/publish">Опубликовать</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/manage/reviews/@review.Id/hide">Скрыть</a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a href="/manage/reviews/@review.Id/delete" onclick="return confirm('Вы действительно хотите удалить этот отзыв?')">Удалить</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>}
+                                    }
+                                </tbody>
+                            </table>
+                            @if (Model.Count > 0)
+                            {
+                            <p class="margin-top-10">
+                                Перетаскивайте ряды курсором мыши, чтобы изменить порядок вывода отзывов.
+                            </p>}
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageScripts {
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".review").eq(0).parent().sortable({
+                update: function (event, ui) {
+                    var item = ui.item;
+                    var id = item.data("id");
+                    var index = item.index();
+                    $.post("/manage/reviews/review-position-change", { review: id, position: index }, function (data) {
+                        if (data.success === false) {
+                            window.alert(data.message);
+                        }
+                    }, "json");
+                }
+            });
+        });
+    </script>
+
+}

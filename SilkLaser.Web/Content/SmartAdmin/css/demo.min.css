@@ -1,0 +1,15 @@
+
+.form-group .state-error em {
+	color: red;
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+.form-group .state-error input[type='text'], .form-group .state-error input[type='password'], .form-group .state-error textarea, .form-group .state-error select {
+	border: 1px solid red;
+	background: #fff0f0;
+}
+.form-group .state-success input[type='text'], .form-group .state-success input[type='password'], .form-group .state-success textarea, .form-group .state-success select {
+	border: 1px solid #7DC27D;
+	background: #f0fff0;
+}

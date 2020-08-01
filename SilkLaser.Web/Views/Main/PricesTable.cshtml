@@ -1,0 +1,219 @@
+﻿@using System.Linq
+@using SilkLaser.Web.Classes.Enums
+@using SilkLaser.Web.Classes.Ext
+@using SilkLaser.Web.Classes.Utils
+@model dynamic
+
+@{
+    var headPrices = ViewContext.DataContext().Prices.Where(p => p.Group == (short)BodyGroup.Head).ToList();
+    var bodyPrices = ViewContext.DataContext().Prices.Where(p => p.Group == (short)BodyGroup.Body).ToList();
+    var cuntPrices = ViewContext.DataContext().Prices.Where(p => p.Group == (short)BodyGroup.Bikini).ToList();
+    var combinePrices = ViewContext.DataContext().Prices.Where(p => p.Group == (short)BodyGroup.Combine).ToList();
+}
+
+<p>
+    Вы можете выбрать единичную процедуру или курс лазерной эпиляции, в среднем состоящий из 6-8 сеансов (зависит от эпилируемой зоны и индивидуальных особенностей). Если вы выбираете курс эпиляции, то стоимость процедур будет значительно дешевле, и во время первой процедуры вы оплачиваете только стоимость первой и последней процедур, а при каждом последующем сеансе вносите оплату за 1 процедуру.
+</p>
+<p>
+    Курс заканчивается, когда Вы достигли желаемого результата, например, на 4 или 7 процедуре.
+</p>
+<p>
+    Если Вы завершили курс из 8 процедур и вам когда-либо понадобится корректирующая процедура, то её стоимость будет дешевле.
+</p>
+<p>Визуальное изображение зон вместе с более детальной информацией по интересующей Вас зоне Вы можете увидеть <a href="/prices" class="link font-bold">здесь</a>.</p>
+<h3 class="sub-title">Голова*</h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>1 процедура</th>
+            <th>1 процедура<br/>(при выборе курса)</th>
+            <th>Корректирующая процедура</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var price in headPrices)
+            {
+                var hasSpecial = price.HasSpecialOffer();
+                <tr class="@(hasSpecial ? "action" : "")">
+                    <td>
+                        <strong class="name"><a href="/prices/@price.Id/@StringUtils.TitleToSeoRoute(price.Title)">@price.Title</a></strong>
+                        @if (price.SubTitle != null)
+                        {<br />@String.Format("({0})", price.SubTitle)}
+                        @if (price.HasSpecialOffer())
+                        {<span class="action-price">Акция</span>}
+                    </td>
+                    <td>
+                        @if (price.BasePriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.BasePrice.ToString("#,0") рублей</span>
+                            <br/>
+                            <strong>@price.BasePriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.BasePrice.ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                    <td>
+                        @if (price.CoursePriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.CoursePrice.GetValueOrDefault(price.BasePrice*(decimal)0.7).ToString("#,0") рублей</span>
+                            <br />
+                            <strong>@price.CoursePriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.CoursePrice.GetValueOrDefault(price.BasePrice * (decimal)0.7).ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                    <td>
+                        @if (price.CorrectionPriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.CorrectionPrice.GetValueOrDefault(price.BasePrice * (decimal)0.6).ToString("#,0") рублей</span>
+                            <br />
+                            <strong>@price.CorrectionPriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.CorrectionPrice.GetValueOrDefault(price.BasePrice * (decimal)0.6).ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p class="text-help text-help_top1">*Цены указаны за 1 процедуру.</p>
+<h3 class="sub-title">Тело*</h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>1 процедура</th>
+                <th>1 процедура<br />(при выборе курса)</th>
+                <th>Корректирующая процедура</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var price in bodyPrices)
+            {
+                var hasSpecial = price.HasSpecialOffer();
+                <tr class="@(hasSpecial ? "action" : "")">
+                    <td>
+                        <strong class="name"><a href="/prices/@price.Id/@StringUtils.TitleToSeoRoute(price.Title)">@price.Title</a></strong>
+                        @if (price.SubTitle != null)
+                        {<br />@String.Format("({0})", price.SubTitle)}
+                        @if (price.HasSpecialOffer())
+                        {<span class="action-price">Акция</span>}
+                    </td>
+                    <td>
+                        @if (price.BasePriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.BasePrice.ToString("#,0") рублей</span>
+                            <br/>
+                            <strong>@price.BasePriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.BasePrice.ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                    <td>
+                        @if (price.CoursePriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.CoursePrice.GetValueOrDefault(price.BasePrice*(decimal)0.7).ToString("#,0") рублей</span>
+                            <br />
+                            <strong>@price.CoursePriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.CoursePrice.GetValueOrDefault(price.BasePrice * (decimal)0.7).ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                    <td>
+                        @if (price.CorrectionPriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.CorrectionPrice.GetValueOrDefault(price.BasePrice * (decimal)0.6).ToString("#,0") рублей</span>
+                            <br />
+                            <strong>@price.CorrectionPriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.CorrectionPrice.GetValueOrDefault(price.BasePrice * (decimal)0.6).ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p class="text-help text-help_top1">*Цены указаны за 1 процедуру.</p>
+
+<h3 class="sub-title">Бикини*</h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>1 процедура</th>
+                <th>1 процедура<br />(при выборе курса)</th>
+                <th>Корректирующая процедура</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var price in cuntPrices)
+            {
+                var hasSpecial = price.HasSpecialOffer();
+                <tr class="@(hasSpecial ? "action" : "")">
+                    <td>
+                        <strong class="name"><a href="/prices/@price.Id/@StringUtils.TitleToSeoRoute(price.Title)">@price.Title</a></strong>
+                        @if (price.SubTitle != null)
+                        {<br />@String.Format("({0})", price.SubTitle)}
+                        @if (price.HasSpecialOffer())
+                        {<span class="action-price">Акция</span>}
+                    </td>
+                    <td>
+                        @if (price.BasePriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.BasePrice.ToString("#,0") рублей</span>
+                            <br/>
+                            <strong>@price.BasePriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.BasePrice.ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                    <td>
+                        @if (price.CoursePriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.CoursePrice.GetValueOrDefault(price.BasePrice*(decimal)0.7).ToString("#,0") рублей</span>
+                            <br />
+                            <strong>@price.CoursePriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.CoursePrice.GetValueOrDefault(price.BasePrice * (decimal)0.7).ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                    <td>
+                        @if (price.CorrectionPriceOffer.HasValue)
+                        {
+                            <span style="text-decoration: line-through">@price.CorrectionPrice.GetValueOrDefault(price.BasePrice * (decimal)0.6).ToString("#,0") рублей</span>
+                            <br />
+                            <strong>@price.CorrectionPriceOffer.Value.ToString("#,0")</strong> @:рублей
+                        }
+                        else
+                        {
+                            <strong>@price.CorrectionPrice.GetValueOrDefault(price.BasePrice * (decimal)0.6).ToString("#,0")</strong> @:рублей
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p class="text-help text-help_top1">*Цены указаны за 1 процедуру.</p>

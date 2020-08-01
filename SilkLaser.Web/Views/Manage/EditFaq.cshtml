@@ -1,0 +1,82 @@
+﻿@model SilkLaser.Web.Classes.Entities.FaqQuestion
+
+@{
+    ViewBag.Title = Model.Id <= 0 ? "Создание вопроса":"Редактирование вопроса "+Model.Question;
+    Layout = "AdminLayout.cshtml";
+    ViewBag.RootUrl = "/manage/faq";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jarviswidget" id="wid-edit-cometition-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-collapsed="false" data-widget-sortable="false">
+            <header>
+                <span class="widget-icon"><i class="fa fa-list"></i></span>
+                <h2>Свойства вопроса</h2>
+            </header>
+            <div>
+                <!-- widget content -->
+                <div class="widget-body">
+                    <form role="form" class="form-horizontal" id="item-form" method="POST" action="/manage/faq/save" enctype="multipart/form-data">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <fieldset>
+                            <legend>Общее</legend>
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-12 control-label">Вопрос</label>
+                                <div class="col-lg-10 col-md-10">
+                                    <input type="text" class="form-control" name="Question" placeholder="Введите вопрос" value="@Model.Question">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Ответ</legend>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <textarea class="form-control html" id="editor-field" name="Answer" rows="20">@Model.Answer</textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" type="submit">
+                                        <i class="fa fa-save"></i>
+                                        Сохранить
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+        <!-- end widget -->
+    </div>
+</div>
+@section PageScripts {
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#item-form").validate({
+                errorClass: "error",
+                errorElement: "em",
+                highlight: function (element) {
+                    $(element).parent().removeClass('state-success').addClass("state-error");
+                    $(element).removeClass('valid');
+                },
+                unhighlight: function (element) {
+                    $(element).parent().removeClass("state-error").addClass('state-success');
+                    $(element).addClass('valid');
+                },
+                rules: {
+                    Question: {
+                        required: true,
+                        maxlength: 255
+                    }
+                }
+            });
+        });
+    </script>
+
+}

@@ -1,0 +1,337 @@
+﻿@model SilkLaser.Web.Classes.Entities.Price
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.HTMLTitle = Model.HTMLTitle;
+    ViewBag.MetaDescription = Model.MetaDescription;
+    ViewBag.MetaKeywords = Model.MetaKeywords;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-body" class="page-body">
+    <section class="section mod-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title anim fadeInUp" data-wow-duration="0.5s">
+                        @Model.Title
+                    </h2>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <div class="detail-img-wrap">
+                        <img src="@Model.Image" alt="img">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-style-1">
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <span class="numbers">Длительность процедуры: </span>@Model.Duration
+                        </p>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <span class="numbers">Среднее количество процедур: </span>@Model.ProceduresCount
+                        </p>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <span class="numbers">Средний интервал между процедурами: </span>@Model.ProceduresInterval
+                        </p>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <span class="numbers">Цена: </span>
+                            @if (Model.BasePriceOffer.HasValue)
+                            {
+                                @Model.BasePriceOffer.Value.ToString("C0")
+                                <span class="old-price">@Model.BasePrice.ToString("C0")</span>
+                                <span class="action">Акция</span>
+                            }
+                            else
+                            {
+                                @Model.BasePrice.ToString("C0")
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contraindications" class="section mod-border">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content-text">
+                        <h2 class="section-title anim fadeInUp" data-wow-duration="0.5s">
+                            Противопоказания
+                        </h2>
+                        <div class="text-style-1">
+                            <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                Ваша безопасность для нас превыше всего, поэтому во время консультации мы обязательно выявляем все возможные противопоказания к проведению лазерной эпиляции.
+                            </p>
+                            <p class="mod-regular anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Противопоказания:</p>
+                            <ul class="el-list mod-xs mod-m">
+                                <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                    Кожные заболевания (фотодерматоз, герпетические высыпания)
+                                    в зоне эпиляции в виде открытых ран, сыпи, воспалений и пр.
+                                </li>
+                                <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                    Наличие открытых ран, ссадин или ожогов на обрабатываемом
+                                    участке кожи.
+                                </li>
+                                <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Свежий сильный загар.</li>
+                                <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Натуральные белые (блондины) и седые волосы (касается исключительно чистых цветов).</li>
+                                <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Период беременности.</li>
+                                <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Эпилепсия.</li>
+                                <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                    Применение препарата Роаккутан или глюкокортикостероидов
+                                    в течение предыдущих 6 месяцев.
+                                </li>
+                                <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Индивидуальная непереносимость.</li>
+                            </ul>
+                            <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                Если клиент младше 18 лет, то потребуется разрешение одного
+                                из родителей или законных опекунов.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section mod-preparation mod-border">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title anim fadeInUp" data-wow-duration="0.5s">
+                        Подготовка и уход после процедуры
+                    </h2>
+                </div>
+                <div class="col-md-12">
+                    <div class="text-style-1">
+                        <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s"><b>Для быстрого достижения наилучших результатов Вам следует придерживаться следующих рекомендаций:</b></p>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">До процедуры:</p>
+                        <ul class="el-list mod-xs mod-m">
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                <b>В течение 4 недель до процедуры.</b> Не отбеливайте и не удаляйте волосы с помощью кремов, воска, сахарной пасты, эпилятора, щипцов или электролиза во время всего курса лазерной эпиляции. Бритье допускается, в случае необходимости.
+                            </li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                <b>В течение 2 недель до процедуры.</b>
+                                Избегайте попадания прямых солнечных и ультрафиолетовых лучей (в солярии) на эпилируемые участки кожи.
+                                Если обрабатываемые участки все же попадают под солнце, то обязательно используйте солнцезащитные кремы с уровнем SPF 30+. Необходимо исключить
+                                также и кремы для автозагара.
+                            </li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                <b>За 24-48 часов до процедуры.</b>
+                                Сбрейте волосы на обрабатываемом участке. Тонкие светлые или очень короткие волосы (до 1 мм) сбривать не нужно.
+                            </li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                <b>В день эпиляции.</b>
+                                Эпилируемый участок кожи должен быть сухим и чистым. Необходимо полностью смыть любой искусственный загар, тональный крем, лосьон, дезодорант и любые другие косметические средства до сеанса эпиляции, иначе дата процедуры может быть отложена.
+                            </li>
+                        </ul>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">После процедуры:</p>
+                        <ul class="el-list mod-xs">
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                <b>В течение 12 часов после процедуры.</b>
+                                Если удаление волос производилось в подмышечной зоне, то исключите использование дезодоранта.
+                            </li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                <b>В течение 24 часов после процедуры.</b>
+                                Избегайте повышенной физической активности и горячего душа.
+                            </li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                <b>В течение 3 дней после процедуры.</b>
+                                Избегайте посещение бани, сауны и спа.
+                            </li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                <b>В течение 2 недель после процедуры.</b>
+                                Избегайте попадания прямых солнечных и ультрафиолетовых лучей на обработанные участки кожи. Если попадание солнечных лучей на обработанный участок неизбежно, то обязательно используйте косметические средства с уровнем SPF 30+.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="preparation-icons">
+                        <div class="preparation-item anim fadeIn" data-wow-duration="0.5s" data-wow-delay="0.05s">
+                            <img src="/Content/html3/assets/img/icon-proces-1.png" alt="img">
+                            <div class="name">
+                                Депиляционные
+                                кремы
+                            </div>
+                        </div>
+                        <div class="preparation-item anim fadeIn" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                            <img src="/Content/html3/assets/img/icon-proces-2.png" alt="img">
+                            <div class="name">
+                                Осветлители волос
+                            </div>
+                        </div>
+                        <div class="preparation-item anim fadeIn" data-wow-duration="0.5s" data-wow-delay="0.15s">
+                            <img src="/Content/html3/assets/img/icon-proces-3.png" alt="img">
+                            <div class="name">
+                                Шугаринг/
+                                Удаление волос воском
+                            </div>
+                        </div>
+                        <div class="preparation-item anim fadeIn" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                            <img src="/Content/html3/assets/img/icon-proces-4.png" alt="img">
+                            <div class="name">
+                                Эпиляторы
+                            </div>
+                        </div>
+                        <div class="preparation-item anim fadeIn" data-wow-duration="0.5s" data-wow-delay="0.25s">
+                            <img src="/Content/html3/assets/img/icon-proces-5.png" alt="img">
+                            <div class="name">
+                                Выщипывание
+                            </div>
+                        </div>
+                        <div class="preparation-item anim fadeIn" data-wow-duration="0.5s" data-wow-delay="0.3s">
+                            <img src="/Content/html3/assets/img/icon-proces-6.png" alt="img">
+                            <div class="name">
+                                Автозагар
+                            </div>
+                        </div>
+                        <div class="preparation-item anim fadeIn" data-wow-duration="0.5s" data-wow-delay="0.35s">
+                            <img src="/Content/html3/assets/img/icon-proces-7.png" alt="img">
+                            <div class="name">
+                                Солнце/
+                                Солярий
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="btn-wrap anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                        <a href="#" data-url="https://w45361.yclients.com" class="el-btn ms_booking">Записаться на <span class="mob-hide">бесплатную </span>консультацию</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section mod-advantages mod-border">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="icon-wrap anim zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                        <img src="/Content/html3/assets/img/svg/icon-1.svg" alt="img">
+                    </div>
+                    <h4 class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Превосходный результат</h4>
+                    <div class="text-style-1">
+                        <p class=" anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                            Мы гарантируем удаление волос за минимальное количество процедур благодаря:
+
+                        </p>
+                        <ul class="el-list mod-xs">
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Профессионализму и узкой специализации наших врачей</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Непревзойденному опыту и количеству проводимых процедур лазерной эпиляции (более 700 в месяц)</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Высокой эффективности и производительности лазера последнего поколения Candela Gentle Pro</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Индивидуальному и целостностному подходу к решению вашей проблемы</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                Абсолютному большинству положительных отзывов
+                                (более 500) клиентов, которые довольны результатом
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-wrap anim zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                        <img src="/Content/html3/assets/img/svg/icon-2.svg" alt="img">
+                    </div>
+                    <h4 class=" anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Доступность цен</h4>
+                    <div class="text-style-1">
+                        <p class=" anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                            Помимо выгодных цен Вы получаете:
+                        </p>
+                        <ul class="el-list mod-xs">
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Все консультации бесплатно</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Бесплатную тестовую процедуру</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s"><span class="underline popup">2000 рублей в подарок новым клиентам</span></li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Пожизненную 50% скидку на корректирующие процедуры</li>
+                            <li class="anim fadeInUp popup" data-wow-duration="0.5s" data-wow-delay="0.1s" title="1000 рублей за каждого приведенного друга
+Вы получите 1 000 рублей на любую процедуру, если Вы являетесь клиентом нашей клиники, а Ваш друг еще не
+является нашим клиентом и сделал любую процедуру в Лазерной клинике Silk. Для этого Ваш друг должен указать
+Вашу фамилию и имя при заполнении Медицинской карты.">1000 рублей за каждого приведенного друга</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-wrap anim zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                        <img src="/Content/html3/assets/img/svg/icon-3.svg" alt="img">
+                    </div>
+                    <h4 class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Безопасность и комфорт</h4>
+                    <div class="text-style-1">
+                        <p class=" anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                            Мы обеспечиваем безопасность и комфортность всех
+                            процедурблагодаря:
+                        </p>
+                        <ul class="el-list mod-xs">
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Наличию медицинской лицензии и высшего медицинского образования у наших специалистов</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Большому опыту и успешному обучению наших врачей компанией Candela</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Запатентованной системе охлаждения кожи (DCD), минимизирующей болевые ощущения во время процедур</li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                                Дружелюбности всех наших сотрудников
+                                и постпроцедурному контролю
+                            </li>
+                            <li class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Соблюдению всех санитарных и медицинских правил, инструкций по безопасности, а также внутреннему контролю качества</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row mod-prise">
+                <div class="col-md-7">
+                    <h3 class=" anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">Гарантия лучшей цены</h3>
+                    <div class="text-style-1">
+                        <p class="anim fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                            Если вы нашли в Хабаровске лазерную эпиляцию на любом <span class="underline popup" title="Лазерные системы, которые доказали свою высокую эффективность по отношению к любым другим системам,
+которым требуется в разы больше процедур, чтобы добиться желаемого результата">медицинском александритовом</span> дешевле, чем у нас, то мы побьем эту цену на 10% .
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-offset-1 text-center">
+                    <div class="prise anim zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">
+                        <div class="text">
+                            Гарантия <br>
+                            лучшей <br>
+                            цены
+                        </div>
+                        <svg class="icon icon-sine-r">
+                            <use xlink:href="/Content/html3/assets/img/symbol/sprite.svg#sine-r"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section mod-priority mod-border">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title anim fadeInUp" data-wow-duration="0.5s">
+                        Очередность процесса
+                    </h2>
+                </div>
+                <div class="col-md-12">
+                    <div class="text-style-1">
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <span class="numbers">1.</span>
+                            <b>Запись на прием. </b>Вы можете записаться по телефону 944 - 150 или через Интернет, нажав <a href="#" data-url="https://w45361.yclients.com" class="ms_booking underline">сюда</a>.
+                        </p>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <span class="numbers">2.</span>
+                            <b>Бесплатная консультация. </b>
+                            Наши опытные врачи оценят все ваши индивидуальные особенности, проведут бесплатную тестовую процедуру и ответят на все ваши вопросы.
+                        </p>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <span class="numbers">3.</span>
+                            <b>Лазерная эпиляция. </b>
+                            Процедура пройдет быстро и комфортно.
+                        </p>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            <span class="numbers">4.</span>
+                            <b>Уход.</b>
+                            Важно будет соблюдать рекомендации врача по уходу, например, использование солнцезащитного крема на эпилируемом участке.
+                        </p>
+                        <p class="anim fadeInUp" data-wow-duration="0.5s">
+                            Если у Вас есть вопросы или Вы хотите узнать о наших услугах более подробно, то Вы можете задать ваш вопрос,
+                            <a href="#" class="kallibri underline">нажав сюда</a>, позвонить нам по телефону <a href="tel:944150" class="underline">944 - 150</a> или записаться на бесплатную консультацию, <a href="#" data-url="https://w45361.yclients.com" class="underline ms_booking">нажав сюда</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

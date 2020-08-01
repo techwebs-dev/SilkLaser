@@ -1,0 +1,77 @@
+@font-face {
+	font-family: 'Arimo';
+	src: url('../fonts/Arimo.eot');
+	src: url('../fonts/Arimo.eot?#iefix') format('embedded-opentype'), url('../fonts/Arimo.woff') format('woff'), url('../fonts/Arimo.ttf') format('truetype'), url('../fonts/Arimo.svg#Arimo') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0020-FFFD;
+}
+
+@font-face {
+	font-family: 'Arimo';
+	src: url('../fonts/Arimo Italic.eot');
+	src: url('../fonts/Arimo Italic.eot?#iefix') format('embedded-opentype'), url('../fonts/Arimo Italic.woff') format('woff'), url('../fonts/Arimo Italic.ttf') format('truetype'), url('../fonts/Arimo Italic.svg#Arimo Italic') format('svg');
+	font-weight: 400;
+	font-style: italic;
+	font-stretch: normal;
+	unicode-range: U+0020-FFFD;
+}
+
+@font-face {
+	font-family: 'Arimo';
+	src: url('../fonts/Arimo Bold.eot');
+	src: url('../fonts/Arimo Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Arimo Bold.woff') format('woff'), url('../fonts/Arimo Bold.ttf') format('truetype'), url('../fonts/Arimo Bold.svg#Arimo Bold') format('svg');
+	font-weight: 700;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0020-FFFD;
+}
+
+@font-face {
+	font-family: 'Arimo';
+	src: url('../fonts/Arimo Bold Italic.eot');
+	src: url('../fonts/Arimo Bold Italic.eot?#iefix') format('embedded-opentype'), url('../fonts/Arimo Bold Italic.woff') format('woff'), url('../fonts/Arimo Bold Italic.ttf') format('truetype'), url('../fonts/Arimo Bold Italic.svg#Arimo Bold Italic') format('svg');
+	font-weight: 700;
+	font-style: italic;
+	font-stretch: normal;
+	unicode-range: U+0020-FFFD;
+}
+
+@font-face{
+	font-family:'OpenSans';
+	src:url('../fonts/OpenSans-Semibold.eot');
+	src:url('../fonts/OpenSans-Semibold.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/OpenSans-Semibold.woff') format('woff'),
+	url('../fonts/OpenSans-Semibold.ttf') format('truetype'),
+	url('../fonts/OpenSans-Semibold.svg#OpenSans-Semibold') format('svg');
+	font-weight:600;
+	font-style:normal;
+	font-stretch:normal;
+	unicode-range:U+0020-FFFD;
+}
+@font-face {
+    font-family:'OpenSans';
+    src: url('../fonts/OpenSans-Regular.eot');
+    src: url('../fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/OpenSans-Regular.woff') format('woff'),
+        url('../fonts/OpenSans-Regular.ttf') format('truetype'),
+        url('../fonts/OpenSans-Regular.svg#OpenSans-Regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-FFFD;
+}
+
+@font-face {
+    font-family:'OpenSans';
+    src: url('../fonts/Open Sans Light.eot');
+	src: url('../fonts/Open Sans Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Open Sans Light.woff') format('woff'),
+		url('../fonts/Open Sans Light.ttf') format('truetype'),
+		url('../fonts/Open Sans Light.svg#Open Sans Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-2212;
+}
